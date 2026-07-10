@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 150px 1fr 300px;
+}
+
+#sidebar-nav {
+    background-color: #1c1c1c;
+    padding: 24px 12px;
+}
+
+#side-contents {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#side-contents a {
+    text-decoration: none;
+    color: #e0e0e0;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+}
+
+#side-contents li.active a {
+    background-color: #3a3a3a;
+    font-weight: bold;
+}
