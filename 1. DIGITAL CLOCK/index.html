@@ -3,33 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital clock</title>
+    <title>Digital Clock Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav id="left_sidebar">
+
+    <nav id="sidebar-nav">
         <ul>
-            <li class="active"><a href="">Dashboard</a></li>
-            <li><a href="">World Clock</a></li>
-            <li><a href="">Alarms</a></li>
-            <li><a href="">Timer</a></li>
-            <li><a href="">Stopwatch</a></li>
-            <li><a href="">Settings</a></li>
+            <li class="active"><a href="#">Dashboard</a></li>
+            <li><a href="#">World Clock</a></li>
+            <li><a href="#">Alarms</a></li>
+            <li><a href="#">Timer</a></li>
+            <li><a href="#">Stopwatch</a></li>
+            <li><a href="#">Settings</a></li>
         </ul>
     </nav>
-    <main id="main_content">
-        <section id="analog">Analog Clock</section>
-        <section id="greetings">Greetings</section>
-        <section id="weather">Weather</section>
-        <section id="quote1">Quote1</section>
-        <section id="location">Location</section>
-        <section id="settings">Settings</section>
-        <section id="timezone">Timezone</section>
-        <section id="stopwatch">StopWatch</section>
-        <section id="Timer">Countdown Timer</section>
+
+    <main id="dashboard-main">
+        <section id="greeting">Greeting</section>
+        <section id="weather">Weather + Location</section>
+
+        <section id="hero-clock">
+            <!-- date, big time, AM/PM, format toggle all live here -->
+        </section>
+
+        <section id="quote-daily">Quote of the Day</section>
+        <section id="clock-settings">Clock Settings</section>
+        <section id="world-clocks">World Timezones</section>
+        <section id="stopwatch">Stopwatch</section>
+        <section id="countdown-timer">Countdown Timer</section>
         <section id="alarm">Alarm</section>
-        <section id="hero">Main Time</section>
-        <section id="quote2">Quote2</section>
+        <section id="quote-footer">Footer Quote</section>
     </main>
-    <aside id="right_sidebar"></aside>
+
+    <aside id="sidebar-right">
+        <section id="toolbar">
+            <button id="btn-search">Search</button>
+            <button id="btn-theme">Theme</button>
+            <button id="btn-quick">Quick Actions</button>
+            <button id="btn-sound">Sound</button>
+            <button id="btn-fullscreen">Fullscreen</button>
+        </section>
+
+        <section id="mini-calendar">Mini Calendar</section>
+        <section id="day-progress">Day Progress</section>
+        <section id="week-progress">Week Progress</section>
+
+        <section id="week-battery">
+            <div id="week-number">Week #</div>
+            <div id="battery-status">Battery</div>
+        </section>
+
+        <section id="timezone-select">
+            <!-- dropdown + auto-detect toggle live here -->
+        </section>
+    </aside>
+
 </body>
 </html>
