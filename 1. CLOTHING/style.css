@@ -15,7 +15,7 @@ html {
 
 body {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
 
     background-color: #f5f5f5;
     color: #111;
@@ -27,7 +27,7 @@ body {
     display: grid;
 
     grid-template-columns: 1fr 70px;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto minmax(0, 1fr) 40px;
 }
 
 
@@ -122,26 +122,33 @@ button {
 main {
     width: 100%;
     min-width: 0;
+    min-height: 0;
 
     grid-column: 1;
     grid-row: 2;
+
+    overflow: visible;
+
+    position: relative;
+    z-index: 2;
 }
 
 .hero {
     width: 100%;
-    min-height: calc(100vh - 90px);
+    height: 100%;
+    min-height: 0;
 
     display: grid;
 
-    grid-template-columns: 1fr 1.7fr 0.9fr;
+    grid-template-columns: 1fr 2fr 1fr;
 
     align-items: stretch;
 }
 
 .product-info {
     align-self: center;
-    padding: 40px 20px 40px 100px;
-    max-width: 520px;
+    padding: 40px 20px 40px 50px;
+    max-width: 420px;
 
     display: flex;
     flex-direction: column;
@@ -157,7 +164,7 @@ main {
 .collection-label {
     position: absolute;
     top: -15px;
-    left: 57%;
+    left: 64%;
     white-space: nowrap;
     font-size: 19px;
     font-weight: 500;
@@ -212,25 +219,192 @@ main {
     height: 100%;
 
     display: flex;
-
     justify-content: center;
     align-items: flex-end;
 
-    overflow: hidden;
+    overflow: visible;
+
+    position: relative;
+    z-index: 2;
 }
 
 .product-image img {
-    height: 105%;
+    height: 100%;
     width: auto;
 
-    max-width: 100%;
+    position: relative;
+    z-index: 2;
 
-    object-fit: contain;
-    object-position: center bottom;
+    top: 40px;
+    left: 20px;
 }
 
 .product-options {
-    padding: 40px;
+    padding: 40px 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    max-width: 360px;
+}
+
+.option-label {
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+.color-options {
+    display: flex;
+
+    gap: 12px;
+}
+
+.color-button {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+.color-metal {
+    background-color: #55595b;
+}
+
+.color-green {
+    background-color: #817a63;
+}
+
+.color-names {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 6px;
+}
+
+.color-names span {
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+.color-section {
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid #c8c8c8;
+}
+
+.product-details {
+    padding: 18px 0;
+
+    border-bottom: 1px solid #c8c8c8;
+}
+
+.product-details p {
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+.product-details p:last-child {
+    margin-bottom: 0;
+}
+
+.size-section {
+    padding: 22px 0;
+}
+
+.size-options {
+    display: flex;
+
+    gap: 6px;
+}
+
+.size-options button {
+    width: 40px;
+    height: 38px;
+
+    border: 1px solid #d0d0d0;
+
+    background-color: transparent;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.size-options button:hover {
+    background-color: #111;
+
+    color: #fff;
+}
+
+.purchase-section {
+    display: flex;
+
+    gap: 8px;
+}
+
+.add-to-bag {
+    flex: 1;
+
+    height: 42px;
+
+    background-color: #111;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    transition: transform 0.2s ease;
+}
+
+.add-to-bag:hover{
+    transform: scale(1.03);
+}
+
+.wishlist-button {
+    width: 42px;
+    height: 42px;
+
+    background-color: #111;
+
+    color: #fff;
+
+    font-size: 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.2s ease;
+}
+
+.wishlist-button:hover{
+    transform: scale(1.03);
 }
 
 /* SOCIAL LINKS */
@@ -238,6 +412,46 @@ main {
 .social-links {
     grid-column: 2;
     grid-row: 2;
+
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.social-navigation {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 22px;
+}
+
+.social-navigation a {
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.social-navigation img {
+    width: 18px;
+    height: 18px;
+
+    object-fit: contain;
+}
+
+.social-navigation a {
+    transition: transform 0.2s ease;
+}
+
+.social-navigation a:hover {
+     transform: translateX(-3px) scale(1.5);
 }
 
 /* FOOTER */
@@ -245,4 +459,12 @@ main {
 footer {
     grid-column: 1 / -1;
     grid-row: 3;
+
+    width: 100%;
+    height: 40px;
+
+    background-color: #12242e;
+
+    position: relative;
+    z-index: 1;
 }
