@@ -90,3 +90,95 @@ wishlistButton.addEventListener("click", function(){
 });
 
 renderWishlist();
+
+// FEATURE 4 — ADD TO SHOPPING BAG
+
+const cart = [];
+
+const addToBagButton = document.querySelector(".add-to-bag");
+
+function addToBag() {
+    if(selectedSize === null){
+        alert("Please select a size");
+        return;
+    }
+    const product = {
+        productId : "623357",
+        productName : "ROGUE.",
+        color : selectedColor,
+        size : selectedSize,
+        quantity : 1
+    };
+
+    cart.push(product);
+    console.log("Cart:", cart);
+    renderCartCount();
+}
+
+addToBagButton.addEventListener("click", function(){
+    addToBag();
+});
+
+// FEATURE 5 — CART COUNT
+
+const cartCount = document.querySelector(".cart-count");
+
+function renderCartCount(){
+    cartCount.innerHTML = cart.length;
+}
+
+renderCartCount();
+
+// FEATURE 6 — SEARCH
+
+let isSearchOpen = false;
+
+const searchButton = document.querySelector(".search-button");
+const searchPanel = document.querySelector(".search-panel");
+const searchInput = document.querySelector(".search-input");
+const searchClose = document.querySelector(".search-close");
+
+const searchMessage = document.querySelector(".search-message");
+
+function renderSearch() {
+    if(isSearchOpen) {
+        searchPanel.classList.add("active");
+    }
+    else{
+        searchPanel.classList.remove("active");
+    }
+}
+
+function openSearch() {
+    isSearchOpen = true;
+    renderSearch();
+    searchInput.focus();
+}
+
+function closeSearch() {
+    isSearchOpen = false;
+    renderSearch();
+    searchInput.value = "";
+}
+
+searchButton.addEventListener("click", function() {
+    openSearch();
+});
+
+searchClose.addEventListener("click", function() {
+    closeSearch();
+});
+
+searchInput.addEventListener("input", function() {
+    const searchText = searchInput.value.trim();
+    console.log("Search:", searchText);
+    if(searchText === ""){
+        searchMessage.innerHTML = "";
+        return;
+    }
+    else{
+        searchMessage.innerHTML = "Searching for: "+ searchText;
+    }
+});
+
+renderSearch();
