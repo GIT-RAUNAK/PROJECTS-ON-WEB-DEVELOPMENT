@@ -1,3 +1,26 @@
+const products = [
+    {
+        id: "#623357",
+        name: "RØGUE.",
+        category: "men",
+        color: "metal"
+    },
+
+    {
+        id: "#623358",
+        name: "RØGUE GREEN",
+        category: "men",
+        color: "green"
+    },
+
+    {
+        id: "#623359",
+        name: "RØGUE OVERSHIRT",
+        category: "men",
+        color: "black"
+    }
+];
+
 //FEATURE 1 — COLOR SELECTION
 
 let selectedColor = "metal";
@@ -174,11 +197,45 @@ searchInput.addEventListener("input", function() {
     console.log("Search:", searchText);
     if(searchText === ""){
         searchMessage.innerHTML = "";
+        searchResults.innerHTML = "";
         return;
     }
-    else{
-        searchMessage.innerHTML = "Searching for: "+ searchText;
-    }
+    const results = searchProducts(searchText);
+    searchMessage.innerHTML = results.length + " PRODUCT(S) FOUND";
+    renderSearchResults(results);
 });
 
 renderSearch();
+
+// FEATURE 7 — PRODUCT SEARCH / SEARCH RESULTS
+
+const searchResults = document.querySelector(".search-results");
+
+function searchProducts(query) {
+    const searchText = query.toLowerCase().trim();
+    if(searchText === ""){
+        return [];
+    }
+    const results = products.filter(function (product) {
+        return product.name.toLowerCase().includes(searchText);
+    });
+    return results;
+}
+
+function renderSearchResults(results) {
+    searchResults.innerHTML = "";
+    if(results.length === 0){
+         searchResults.innerHTML = `NO PRODUCTS FOUND`;
+         return;
+    }
+    results.forEach(function (product) {
+        const result = document.createElement("div");
+        result.classList.add("search-result");
+        result.innerHTML = `
+            <span>${product.name}</span>
+            <span>${product.id}</span>
+        `;
+        searchResults.appendChild(result);
+    });
+}
+
