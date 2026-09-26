@@ -2,12 +2,15 @@ import { AddButton } from "./AddButton";
 import { DateInput } from "./DateInput";
 import { TodoInput } from "./TodoInput";
 
-export function TodoAdd() {
+export function TodoAdd({todoName, setTodoName}) {
     return <>
         <div className="container">
             <div className="row">
                 <div className="col-6"> 
-                    <TodoInput />    
+                    <TodoInput 
+                        todoName = {todoName}
+                        setTodoName = {setTodoName}
+                    />    
                 </div>
                 <div className="col-4">
                     <DateInput /> 
