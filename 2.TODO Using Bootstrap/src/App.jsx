@@ -13,9 +13,10 @@ function App() {
   function handleAddTodo() {
     if(todoName && todoDate){
       const newTodo = {
-      name: todoName,
-      date: todoDate
-    }
+        id: Date.now(),
+        name: todoName,
+        date: todoDate
+      }
     setTodos([...todos, newTodo]);
     setError("");
     setTodoName("");
