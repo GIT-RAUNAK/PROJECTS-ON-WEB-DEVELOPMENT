@@ -26,6 +26,13 @@ function App() {
       setError("Please enter both a Todo and a date.");
     }
   }
+
+  function handleDeleteTodo(id) {
+    const updatedTodo = todos.filter((todo)=>{
+      return todo.id!==id;
+    })
+    setTodos(updatedTodo);
+  }
   
   return (
     <>
@@ -40,6 +47,7 @@ function App() {
       {error && <div>{error}</div>}
       <TodoList 
         todos = {todos}
+        handleDeleteTodo = {handleDeleteTodo}
       />
     </>
   )

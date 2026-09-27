@@ -1,4 +1,6 @@
-export function TodoList ({todos}) {
+import { DeleteButton } from "./DeleteButton"
+
+export function TodoList ({todos, handleDeleteTodo}) {
     return(
         todos.map((todo) => {
             return(
@@ -10,7 +12,10 @@ export function TodoList ({todos}) {
                         {todo.date}
                     </div>
                     <div className="col-2">
-
+                        <DeleteButton 
+                            todoId = {todo.id}
+                            handleDeleteTodo = {handleDeleteTodo}
+                        />
                     </div>
                 </div>
             )
