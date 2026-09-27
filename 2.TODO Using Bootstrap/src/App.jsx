@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { TodoName } from './components/TodoName'
 import { TodoAdd } from './components/TodoAdd/TodoAdd'
@@ -9,6 +9,20 @@ function App() {
   const[todoDate, setTodoDate] =useState("");
   const[todos, setTodos] = useState([]);
   const[error, setError] = useState("");
+  const[isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if(isLoaded) localStorage.setItem("todos", JSON.stringify(todos));
+  },[todos, isLoaded])
+
+  useEffect(() => {
+   const savedItems = localStorage.getItem("todos");
+   if(savedItems!==null) {
+    const parsedTodos = JSON.parse(savedItems);
+    setTodos(parsedTodos)
+   }
+  setIsLoaded(true);
+  },[])
 
   function handleAddTodo() {
     if(todoName && todoDate){
