@@ -2,24 +2,20 @@ import { useState } from 'react'
 
 import { TodoName } from './components/TodoName'
 import { TodoAdd } from './components/TodoAdd/TodoAdd'
+import { TodoList } from './components/TodoList';
 
 function App() {
   const[todoName, setTodoName] = useState("");
   const[todoDate, setTodoDate] =useState("");
   const[todos, setTodos] = useState([]);
 
-  const newTodo = [];
   function handleAddTodo() {
-    newTodo = {
-      name : todoName,
-      date : todoDate
+    const newTodo = {
+      name: todoName,
+      date: todoDate
     }
+    setTodos([...todos, newTodo]);
   }
-  const updatedTodos = [...previousTodos, newTodo];
-
-  console.log(updatedTodos);
-
-  setTodos(updatedTodos);
   
   return (
     <>
@@ -31,7 +27,9 @@ function App() {
         setTodoDate = {setTodoDate}
         handleAddTodo = {handleAddTodo}
       />
-      {/* <TodoList /> */}
+      <TodoList 
+        todos = {todos}
+      />
     </>
   )
 }
