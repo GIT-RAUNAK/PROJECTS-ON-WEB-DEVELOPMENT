@@ -2,7 +2,7 @@ import { AddButton } from "./AddButton";
 import { DateInput } from "./DateInput";
 import { TodoInput } from "./TodoInput";
 
-export function TodoAdd({todoName, setTodoName, todoDate, setTodoDate}) {
+export function TodoAdd({todoName, setTodoName, todoDate, setTodoDate, handleAddTodo}) {
     return <>
         <div className="container">
             <div className="row">
@@ -19,7 +19,9 @@ export function TodoAdd({todoName, setTodoName, todoDate, setTodoDate}) {
                     /> 
                 </div>
                 <div className="col-2"> 
-                    <AddButton />    
+                    <AddButton
+                        handleAddTodo = {handleAddTodo}
+                    />    
                 </div>
             </div>
         </div>
