@@ -8,15 +8,22 @@ function App() {
   const[todoName, setTodoName] = useState("");
   const[todoDate, setTodoDate] =useState("");
   const[todos, setTodos] = useState([]);
+  const[error, setError] = useState("");
 
   function handleAddTodo() {
-    const newTodo = {
+    if(todoName && todoDate){
+      const newTodo = {
       name: todoName,
       date: todoDate
     }
     setTodos([...todos, newTodo]);
+    setError("");
     setTodoName("");
     setTodoDate("");
+    }
+    else{
+      setError("Please enter both a Todo and a date.");
+    }
   }
   
   return (
@@ -29,6 +36,7 @@ function App() {
         setTodoDate = {setTodoDate}
         handleAddTodo = {handleAddTodo}
       />
+      {error && <div>{error}</div>}
       <TodoList 
         todos = {todos}
       />
