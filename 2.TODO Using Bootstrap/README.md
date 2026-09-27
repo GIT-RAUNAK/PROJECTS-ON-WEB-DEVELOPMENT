@@ -1,16 +1,157 @@
-# React + Vite
+# 📝 React Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and responsive Todo application built with **React.js** and **Bootstrap**.
 
-Currently, two official plugins are available:
+This project was built from scratch to understand the fundamentals of React, including components, props, state management, event handling, array methods, `useEffect`, JSON serialization, and browser `localStorage`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application allows users to create and delete Todos while automatically saving them in the browser so that they remain available even after refreshing the page.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ➕ Add new Todos
+- 📅 Assign a date to each Todo
+- 🗑️ Delete Todos
+- ✅ Input validation
+- 💾 Persist Todos using `localStorage`
+- 🔄 Todos survive page refreshes
+- 🆔 Unique ID generated for every Todo
+- 📱 Responsive Bootstrap layout
+- 🎨 Bootstrap-based styling
+- ⚛️ Component-based React architecture
+- 📦 JSON serialization/deserialization
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| React.js | Frontend UI and application logic |
+| JavaScript | Application functionality |
+| Bootstrap | Layout and styling |
+| HTML/JSX | Structure |
+| CSS | Styling through Bootstrap |
+| JSON | Data serialization |
+| localStorage | Persistent browser storage |
+| Vite | React development environment |
+| Git | Version control |
+
+---
+
+# 📂 Project Structure
+
+```text
+todo-app/
+│
+├── public/
+│
+├── src/
+│   │
+│   ├── components/
+│   │   │
+│   │   ├── TodoName.jsx
+│   │   │
+│   │   ├── TodoAdd/
+│   │   │   ├── TodoAdd.jsx
+│   │   │   ├── TodoInput.jsx
+│   │   │   ├── DateInput.jsx
+│   │   │   └── AddButton.jsx
+│   │   │
+│   │   ├── TodoList.jsx
+│   │   └── DeleteButton.jsx
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── package.json
+├── package-lock.json
+└── README.md
+
+
+🔄 Application Data Flow
+
+                    ┌───────────────┐
+                    │     App       │
+                    └───────┬───────┘
+                            │
+              ┌─────────────┴─────────────┐
+              │                           │
+              ▼                           ▼
+        TodoAdd                        TodoList
+              │                           │
+       ┌──────┼──────┐                    │
+       │      │      │                    │
+       ▼      ▼      ▼                    ▼
+     Input   Date   Add                 Todos
+                                          │
+                                          ▼
+                                    DeleteButton
+
+
+ADD
+ │
+ ▼
+handleAddTodo()
+ │
+ ▼
+newTodo
+ │
+ ▼
+setTodos()
+ │
+ ▼
+todos changes
+ │
+ ▼
+useEffect()
+ │
+ ▼
+JSON.stringify()
+ │
+ ▼
+localStorage
+
+
+DELETE
+ │
+ ▼
+handleDeleteTodo()
+ │
+ ▼
+filter()
+ │
+ ▼
+updatedTodos
+ │
+ ▼
+setTodos()
+ │
+ ▼
+useEffect()
+ │
+ ▼
+localStorage updated
+
+
+PAGE REFRESH
+ │
+ ▼
+localStorage.getItem()
+ │
+ ▼
+JSON.parse()
+ │
+ ▼
+setTodos()
+ │
+ ▼
+Todos restored
+
+👨‍💻 Author
+
+Raunak
+
+Built with ❤️ while learning React.js.
