@@ -15,6 +15,8 @@ function App() {
       date: todoDate
     }
     setTodos([...todos, newTodo]);
+    setTodoName("");
+    setTodoDate("");
   }
   
   return (
